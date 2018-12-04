@@ -1,0 +1,277 @@
+body{
+	background-image: linear-gradient(to bottom, rgb(20, 60, 80) , rgb(10, 30, 40));
+	background-repeat: no-repeat;
+	
+	
+}
+
+
+h1{
+	margin-top: 80px;
+	font-size: 80px;
+	text-align: center;
+	color: rgb(200,160,90);
+	font-family:"Georgia";
+	
+}
+h2{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 50px;
+	text-align: center;
+	color: rgb(30,20,10);
+	font-family:"Georgia";
+}
+
+h3{
+	margin-top: 80px;
+	margin-left: 20px;
+	font-size: 40px;
+	color: rgb(200,160,90);
+	font-family:"Georgia";
+	position: relative;
+	top: 20px
+}
+
+p{
+	margin: 10px 30px 0 px 30px;
+	font-family:"Times New Roman";
+	font-size: 22px;
+}
+
+a{
+	text-decoration: none
+	
+	
+}
+
+#wrappertiny{
+	width: 850px;
+	margin:auto;
+	
+}
+#wrapper{
+	padding:-10px;
+	
+}
+
+.center{
+	margin:auto;
+	display: block;
+	
+}
+.importantdiv{
+	width: 90%;
+	background-color: rgba(200,160,90, 0.9); 
+	margin-bottom: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	border-style:double;
+	
+}
+.sidetoside{
+	display:inline-block
+}
+.common{
+	background-image: linear-gradient(rgb(180,160,130),rgb(100, 90, 80));
+	margin: 0px auto 30px auto;
+	border-top-style: groove;
+	border-left-style: groove;
+	border-bottom-style:outset;
+	border-right-style:outset;
+	border-color: rgba(20, 60, 80, 0.5);
+	border-width: 8px;
+	border-radius: 4px;
+	width: 90%;
+	
+}
+
+#MainLogo{
+	
+
+	margin-bottom:75px;
+	display: block;
+	float: right;
+	position:relative;
+	bottom: 30px;
+	right: 0px;
+}
+
+#logo{
+	margin-bottom:75px;
+	display: block;
+	float: right;
+	position:relative;
+	right: 40px;
+	top: 10px
+}
+	
+.foto{
+	border: double;
+	margin: auto;
+}	
+
+	
+
+	
+.opgave{
+	background-color: rgba(240,200,90, 0.9);
+	width: 500px;
+	height: 300px;
+	border: double;
+	position: relative;
+	top: 40px;
+	right: 150px;
+}
+
+#controlediv{
+	display: block;
+	
+	
+}
+
+#raadseldiv{
+	position: absolute;
+	left: 600px;
+	top: 250px;
+	border: double;
+	height: 350px;
+}
+
+#fotoraadsel{
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 25%;
+	margin-bottom: 5px;
+	height: 180px;
+	width: 225px;
+	border: double;
+}
+
+#hoofd{
+	position: center;
+	width: 880px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	
+	
+}
+
+#hidephoto{
+	position: absolute;
+	left:730px;
+	top:409px;
+	height: 180px;
+	width: 225px;
+	transition: opacity 2s;
+}
+
+#raadsel{
+	
+	
+	
+	
+	
+}
+
+#controle{
+	position: absolute;
+	top: 435px;
+	left: 400px;
+	height: 150px;
+	width: 150px;
+	border-radius: 33%;
+	background-color: rgb(220,90,90);
+}
+
+#gallery{
+	width: 30%;
+	height: 30%;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	background-color: rgba(20, 60, 80, 0.5);
+	padding-top: 1%;
+	border-top-style: groove;
+	border-left-style: groove;
+	border-bottom-style:outset;
+	border-right-style:outset;
+	border-color: rgba(20, 60, 80, 0.5);
+	border-width: 8px;
+	border-radius: 4px;
+}
+
+.galleryfoto{
+	width: 90%;
+	height: 70%;
+	margin: auto;
+	
+	
+	
+}
+
+
+h4{
+	background-color: rgba(200,160,90, 0.9);
+	border: solid;
+	margin: auto;
+	font-size: 40px;
+}
+
+#timediv{
+	position:absolute;
+	top: 250px;
+	left: 400px;
+	background-color:rgba(240,200,90, 0.9);
+	display:block-inline;
+	width: 150px;
+	height: 100px;
+	border:double;
+}
+
+.button{
+	border-radius: 14px;
+	margin: auto;
+	display:block;
+	height: 50px;
+	width: 140px;
+	position: relative;
+	bottom: 10px;
+	color: rgb(30,20,10);
+	background-color: rgba(220,180,90, 0.9);
+
+
+}
+
+.button:hover{
+	background-color: rgb(240,200,90);
+
+}
+
+
+.begin{
+	display:block;
+	position:relative;
+	top: 10px;
+	left: 15px;
+	font-size: 26px
+	
+	
+}
+
+
+.sticky{
+	margin-top: -80px;
+	margin-left: -20px;
+	position: sticky; 
+	top: 0px;
+	width:490px;
+	height:140px;
+	background-color: rgba(10, 30, 40, 0.8);
+	border-color: rgba(170, 140, 105, 0.5);
+	border-bottom-style:groove;
+	border-right-style:groove;
+	
+}
