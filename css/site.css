@@ -4,10 +4,9 @@
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
-
 }
 
 .bg-gradient-light-yellow {
@@ -16,34 +15,4 @@ html, body {
 
 .bg-gradient-blue {
     background: linear-gradient(rgb(20, 60, 80) , rgb(10, 30, 40));
-}
-
-
-
-#clockdiv{
-	font-family: sans-serif;
-	color: #fff;
-	display: inline-block;
-	font-weight: 100;
-	text-align: center;
-	font-size: 30px;
-}
-
-#clockdiv > div{
-	padding: 10px;
-	border-radius: 3px;
-	background: #00BF96;
-	display: inline-block;
-}
-
-#clockdiv div > span{
-	padding: 15px;
-	border-radius: 3px;
-	background: #00816A;
-	display: inline-block;
-}
-
-.smalltext{
-	padding-top: 5px;
-	font-size: 16px;
 }
