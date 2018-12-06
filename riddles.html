@@ -1,54 +1,30 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>City Puzzle Gent </title>
-	<link rel="stylesheet" type="text/css" href=hoofdpagina.css>
-	<script type="text/javascript">
-	function initialize() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(geolocationCallback, error);
-        } else {
-			error('not supported');
-        }
-    }
-
-    function geolocationCallback(position) {
-		 wgs84 = "'POINT("+position.coords.latitude+","+position.coords.longitude+")'";
-    document.getElementById("locatie").innerHTML = wgs84
-	
-	}
-
-    function error(msg) {
-		alert(msg);
-    }
-    </script>
+    <meta charset="utf-8"/>
+	<title>Ghent discovery</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/flipclock.css">
+	<link rel="stylesheet" type="text/css" href="css/site.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/flipclock.min.js"></script>
+	<script src="js/site.js"></script>
+	<script src="js/riddles.js"></script>
 </head>
-<body onload="initialize()">
-    <body onload = initialize>
-        <h1>Gent Discovery </h1>
-        
-		
-		
-
-        
-        
-    <div class="common" style="height:400px">
-		<div id="raadseldiv" class="opgave sidetoside">
-			<h4>Raadsel</h4>
-			<p id="raadsel"> We zoeken een straat: plat water in het frans (Enkel de echte burgie zal dit weten) </p>
-			<img id="fotoraadsel" src=images\locaties\josephplateaustra.jpg>
+<body class="bg-gradient-blue">
+	<div class="d-flex flex-column align-items-center p-3 m-3">
+		<div class="d-flex align-items-center mt-3">
+			<img class="mr-5" src="assets/logo.png" width="150px" height="150px" alt="logo">
+			<h1 class="font-weight-bold">Ghent discovery</h1>
 		</div>
-		<div id="timediv"> <p>tijd:</p> </div>
-		<button id="controle" type="button" onclick= call = warmkoud()> </button>
+		<h4 class="bg-primary rounded border border-secondary text-center font-weight-bold px-5 py-2 mt-4 mb-3 w-50" style="width: 90%; color:rgb(30,20,10)">Raadsel</h4>
+		<div class="d-flex flex-column align-items-center w-50">
+			<small id="questionText" class="bg-gradient-light-yellow border border-secondary p-3 m-3">Question placeholder</small>
+			<button id="hintButton" disabled class="btn btn-primary m-3" type="button" style="width: 300px">Hint placeholder</button>
+			<button id="answerButton" disabled class="btn btn-primary" type="button" style="width: 300px">Answer placeholder</button>
+		</div>
 	</div>
-	<img id="hidephoto" src=images\question-mark.jpg onclick=document.getElementById("hidephoto").style.opacity=0>
-	<div style="height:300px;">
-	</div
-		
-	<div> <p id=locatie style: style="color:red;" > coord </p></div>
-	 
-    
-	
-	</body>
+</body>
