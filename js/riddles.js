@@ -118,7 +118,6 @@ function updateDistanceCallback(position) {
     dY = dLongitude * Math.cos(avgLatitude * Math.PI / 180) * 40075160 / 360
 
     meters = Math.round(Math.sqrt(dX * dX + dY * dY))
-    meters = 3
 
     if (meters <= 5) {
         $("#answerButton").prop("disabled", false);
