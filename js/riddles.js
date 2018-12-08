@@ -106,7 +106,7 @@ function updateDistance() {
         }
     }
     else {
-        answerButton.innerHTML = "Antwoord in /m"
+        answerButton.innerHTML = "Antwoord in ... m"
         console.error("Geolocation is not supported on this device!")
     }
 }
