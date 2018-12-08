@@ -92,7 +92,7 @@ function updateTimer() {
 
 function resetDistance() {
     $("#answerButton").prop("disabled", true);
-    answerButton.innerHTML = "Antwoord in /m"
+    answerButton.innerHTML = "Antwoord in ... m"
 
     updateDistance()
     distanceInterval = setInterval(updateDistance, 1000)
