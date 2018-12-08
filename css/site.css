@@ -1,0 +1,18 @@
+* {
+	font-family: "Georgia";
+    font-size: 100%;
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-gradient-light-yellow {
+    background: linear-gradient(rgb(180,160,130),rgb(135, 120, 98));
+}
+
+.bg-gradient-blue {
+    background: linear-gradient(rgb(20, 60, 80) , rgb(10, 30, 40));
+}
