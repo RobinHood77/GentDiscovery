@@ -21,9 +21,11 @@ $(document).ready(function() {
 function initButtons() {
     hintButton = document.getElementById("hintButton")
     answerButton = document.getElementById("answerButton")
+    resetButton = document.getElementById("resetButton")
 
     $("#hintButton").click(showHint);
     $("#answerButton").click(goToNextRiddle);
+    $("#resetButton").click(resetGame);
 }
 
 function initIntervals() {
@@ -65,6 +67,11 @@ function goToNextRiddle() {
 
 function showHint() {
     alert("Hint: " + currentRiddle.hint)
+}
+
+function resetGame() {
+    setCookie("progress", 0);
+    location.reload();
 }
 
 function resetTimer() {
@@ -118,7 +125,9 @@ function updateDistanceCallback(position) {
     dX = dLatitude * 40008000 / 360
     dY = dLongitude * Math.cos(avgLatitude * Math.PI / 180) * 40075160 / 360
 
-    meters = Math.round(Math.sqrt(dX * dX + dY * dY))
+    /*meters = Math.round(Math.sqrt(dX * dX + dY * dY))*/
+
+    meters = 2;
 
     if (meters <= distanceThreshold) {
         $("#answerButton").prop("disabled", false);
@@ -133,3 +142,5 @@ function updateDistanceCallback(position) {
     }
     isAskingDistance = false
 }
+
+
