@@ -1,5 +1,6 @@
 // settings
-var defaultHintTimeout = 600
+var defaultHintTimeout = 600 // seconds
+var distanceThreshold = 5 // meters
 
 var progress, riddles, currentRiddle
 var timerSeconds
@@ -119,7 +120,7 @@ function updateDistanceCallback(position) {
 
     meters = Math.round(Math.sqrt(dX * dX + dY * dY))
 
-    if (meters <= 5) {
+    if (meters <= distanceThreshold) {
         $("#answerButton").prop("disabled", false);
         answerButton.innerHTML = "Volgende vraag"
         
