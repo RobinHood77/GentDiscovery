@@ -45,9 +45,23 @@ def distanceBetween(riddle0, riddle1):
 
     return math.sqrt(dx * dx + dy * dy)
 
-# make sure that the distance between two riddles is rather small
-startRiddle = riddles[0]
-riddles = [startRiddle] + sorted(riddles[1:], key=lambda riddle: distanceBetween(startRiddle, riddle))
+def calculateRoute(riddles, start):
+    route = [riddles[start]]
+    distance = 0
+    for i in range(len(riddles) - 1):
+        currentRiddle = route[i]
+        nextRiddle = min([riddle for riddle in riddles if riddle not in route], key=lambda riddle: distanceBetween(currentRiddle, riddle))
+        route.append(nextRiddle)
+        distance += distanceBetween(currentRiddle, nextRiddle)
+    return route, distance
+
+# make sure that the travel distance is small
+minDistance = 1e9
+for i in range(len(riddles)):
+    newRiddles, distance = calculateRoute(riddles, i)
+    if distance < minDistance:
+        minTravelDistance = distance
+        riddles = newRiddles
 
 json = str([{'question': question, 'hintImageUrl': '../' + hintImageUrl, 'answer': answer, 'latitude': float(latitude), 'longitude': float(longitude)} for id, question, hintImageUrl, answer, latitude, longitude in riddles])
 
