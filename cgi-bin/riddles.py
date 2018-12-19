@@ -18,7 +18,15 @@ if riddles_seed is None:
     riddles_seed = int(time.time() * 1000)
 
 database = postgresql.DB(host='movestud.ugent.be', port=8032, dbname='smartphone', user='groep1', passwd='groep1')
-query = database.query('SELECT id, raadsel AS question, locatie_naam AS answer, left(split_part(coord_wgs84, \' \', 2), -1) AS latitude, right(split_part(coord_wgs84, \' \', 1), -6) AS longitude FROM groep1."Raadsels" ORDER BY id')
+query = database.query('''
+    SELECT
+        id,
+        raadsel AS question,
+        locatie_naam AS answer,
+        left(split_part(asText(transform(geometry_lambert2008, 4326)), ' ', 2), -1) AS latitude,
+        right(split_part(asText(transform(geometry_lambert2008, 4326)), ' ', 1), -6) AS longitude
+    FROM groep1."Raadsels"
+    ORDER BY id''')
 
 random.seed(riddles_seed)
 riddles = random.sample(query.getresult(), 10)

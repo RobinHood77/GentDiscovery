@@ -19,6 +19,9 @@ $(document).ready(function() {
 });
 
 function initButtons() {
+    hintButton = document.getElementById("hintButton")
+    answerButton = document.getElementById("answerButton")
+
     $("#hintButton").click(showHint);
     $("#answerButton").click(goToNextRiddle);
     $("#homeButton").click(returnToHome);
@@ -60,7 +63,7 @@ function showHint() {
 function returnToHome() {
     deleteCookie("progress")
     deleteCookie("seed")
-    window.location.href = "index.html"
+    window.location.href = "../index.html"
 }
 
 function resetTimer() {
