@@ -15,17 +15,13 @@ $(document).ready(function() {
     initButtons()
     initIntervals()
     getProgress()
-    getRiddles()
+    updateRiddle()
 });
 
 function initButtons() {
-    hintButton = document.getElementById("hintButton")
-    answerButton = document.getElementById("answerButton")
-    resetButton = document.getElementById("resetButton")
-
     $("#hintButton").click(showHint);
     $("#answerButton").click(goToNextRiddle);
-    $("#resetButton").click(resetGame);
+    $("#homeButton").click(returnToHome);
 }
 
 function initIntervals() {
@@ -38,13 +34,6 @@ function getProgress() {
     progress = typeof progress == "string" ? parseInt(progress, 10) : 0
 }
 
-function getRiddles() {
-    $.getJSON("data/riddles.json", function(data) {
-        riddles = data
-        updateRiddle()
-    })
-}
-
 function updateRiddle() {
     currentRiddle = riddles[progress]
     questionText.innerHTML = currentRiddle.question
@@ -54,9 +43,8 @@ function goToNextRiddle() {
     progress++
     setCookie("progress", progress)
     if (progress >= riddles.length) {
-        setCookie("progress", 0)
         alert("Je hebt het einde bereikt!")
-        window.location.href = "index.html";
+        returnToHome()
     }
     else {
         updateRiddle()
@@ -69,9 +57,10 @@ function showHint() {
     alert("Hint: " + currentRiddle.hint)
 }
 
-function resetGame() {
-    setCookie("progress", 0);
-    location.reload();
+function returnToHome() {
+    deleteCookie("progress")
+    deleteCookie("seed")
+    window.location.href = "index.html"
 }
 
 function resetTimer() {
@@ -125,7 +114,7 @@ function updateDistanceCallback(position) {
     dX = dLatitude * 40008000 / 360
     dY = dLongitude * Math.cos(avgLatitude * Math.PI / 180) * 40075160 / 360
 
-    meters = 5
+    meters = Math.round(Math.sqrt(dX * dX + dY * dY))
 
     if (meters <= distanceThreshold) {
         $("#answerButton").prop("disabled", false);
