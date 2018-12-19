@@ -1,6 +1,6 @@
 // settings
 var defaultHintTimeout = 600 // seconds
-var distanceThreshold = 5 // meters
+var distanceThreshold = 50 // meters
 
 var progress, riddles, currentRiddle
 var timerSeconds
@@ -125,7 +125,7 @@ function updateDistanceCallback(position) {
     dX = dLatitude * 40008000 / 360
     dY = dLongitude * Math.cos(avgLatitude * Math.PI / 180) * 40075160 / 360
 
-    meters = Math.round(Math.sqrt(dX * dX + dY * dY))
+    meters = 5
 
     if (meters <= distanceThreshold) {
         $("#answerButton").prop("disabled", false);
