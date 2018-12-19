@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
+import math
 import os
 import random
 import time
@@ -31,6 +32,22 @@ query = database.query('''
 
 random.seed(riddles_seed)
 riddles = random.sample(query.getresult(), 10)
+
+def distanceBetween(riddle0, riddle1):
+    latitude0, longitude0 = map(float, riddle0[4:])
+    latitude1, longitude1 = map(float, riddle1[4:])
+
+    avg_latitude = (latitude0 + latitude1) / 2
+    dlatitude = latitude0 - latitude1
+    dlongitude = longitude0 - longitude1
+    dx = dlatitude * 40008000 / 360
+    dy = dlongitude * math.cos(avg_latitude * math.pi / 180) * 40075160 / 360
+
+    return math.sqrt(dx * dx + dy * dy)
+
+# make sure that the distance between two riddles is rather small
+startRiddle = riddles[0]
+riddles = [startRiddle] + sorted(riddles[1:], key=lambda riddle: distanceBetween(startRiddle, riddle))
 
 json = str([{'question': question, 'hintImageUrl': '../' + hintImageUrl, 'answer': answer, 'latitude': float(latitude), 'longitude': float(longitude)} for id, question, hintImageUrl, answer, latitude, longitude in riddles])
 
