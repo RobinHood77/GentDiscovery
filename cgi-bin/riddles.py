@@ -22,7 +22,7 @@ query = database.query('''
     SELECT
         id,
         raadsel AS question,
-        hint AS hint,
+        foto_url AS hintImageUrl,
         locatie_naam AS answer,
         left(split_part(asText(transform(geometry_lambert2008, 4326)), ' ', 2), -1) AS latitude,
         right(split_part(asText(transform(geometry_lambert2008, 4326)), ' ', 1), -6) AS longitude
@@ -32,7 +32,7 @@ query = database.query('''
 random.seed(riddles_seed)
 riddles = random.sample(query.getresult(), 10)
 
-json = str([{'question': question, 'hint': hint, 'answer': answer, 'latitude': float(latitude), 'longitude': float(longitude)} for id, question, hint, answer, latitude, longitude in riddles])
+json = str([{'question': question, 'hintImageUrl': '../' + hintImageUrl, 'answer': answer, 'latitude': float(latitude), 'longitude': float(longitude)} for id, question, hintImageUrl, answer, latitude, longitude in riddles])
 
 with open('riddles-template.html') as template:
     html = template.read()

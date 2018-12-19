@@ -57,7 +57,7 @@ function goToNextRiddle() {
 }
 
 function showHint() {
-    alert("Hint: " + currentRiddle.hint)
+    $("#hintImage").attr("src", currentRiddle.hintImageUrl);
 }
 
 function returnToHome() {
