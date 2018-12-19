@@ -51,6 +51,7 @@ function goToNextRiddle() {
     }
     else {
         updateRiddle()
+        deleteCookie("timerSeconds")
         resetTimer()
         resetDistance()
     }
@@ -62,6 +63,7 @@ function showHint() {
 
 function returnToHome() {
     deleteCookie("progress")
+    deleteCookie("timerSeconds")
     deleteCookie("seed")
     window.location.href = "../index.html"
 }
@@ -70,7 +72,10 @@ function resetTimer() {
     $("#hintButton").prop("disabled", true);
     hintButton.innerHTML = "Hint over //://"
 
-    timerSeconds = defaultHintTimeout
+    timerSeconds = getCookie("timerSeconds")
+    timerSeconds = typeof timerSeconds == "string" ? parseInt(timerSeconds, 10) : defaultHintTimeout
+
+    clearInterval(timerInterval)
 
     updateTimer()
     timerInterval = setInterval(updateTimer, 1000)
@@ -79,19 +84,24 @@ function resetTimer() {
 function updateTimer() {
     minutes = Math.floor(timerSeconds / 60)
     seconds = timerSeconds % 60
-    hintButton.innerHTML = "Hint over " + minutes + ":" + seconds
-    if (timerSeconds <= 0) {
+    if (timerSeconds % 10 == 0) {
+        setCookie("timerSeconds", timerSeconds)
+    }
+    if (timerSeconds < 0) {
         $("#hintButton").prop("disabled", false);
         hintButton.innerHTML = "Toon hint"
-
-        clearInterval(timerInterval)
     }
-    timerSeconds--
+    else {
+        timerSeconds--
+        hintButton.innerHTML = "Hint over " + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+    }
 }
 
 function resetDistance() {
     $("#answerButton").prop("disabled", true);
     answerButton.innerHTML = "Antwoord in ... m"
+
+    clearInterval(distanceInterval)
 
     updateDistance()
     distanceInterval = setInterval(updateDistance, 1000)
@@ -122,9 +132,9 @@ function updateDistanceCallback(position) {
     if (meters <= distanceThreshold) {
         $("#answerButton").prop("disabled", false);
         answerButton.innerHTML = "Volgende vraag"
-        
-        clearInterval(distanceInterval)
 
+        clearInterval(distanceInterval)
+        
         alert("Je hebt het doel \"" + currentRiddle.answer + "\" bereikt!")
     }
     else {
