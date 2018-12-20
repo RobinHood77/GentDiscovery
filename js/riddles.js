@@ -2,6 +2,13 @@
 var defaultHintTimeout = 600 // seconds
 var distanceThreshold = 50 // meters
 
+// demo mode overrides
+var url = new URL(window.location.href)
+if (url.searchParams.get("mode") == "demo") {
+    defaultHintTimeout = 10 // seconds
+    distanceThreshold = 1000 // meters
+}
+
 var progress, riddles, currentRiddle
 var timerSeconds
 var questionText, hintButton, answerButton

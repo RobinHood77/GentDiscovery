@@ -26,8 +26,8 @@ try:
             raadsel AS question,
             foto_url AS hintImageUrl,
             locatie_naam AS answer,
-            left(split_part(asText(transform(geometry_lambert2008, 4326)), ' ', 2), -1) AS latitude,
-            right(split_part(asText(transform(geometry_lambert2008, 4326)), ' ', 1), -6) AS longitude
+            left(split_part(wgs84, ' ', 2), -1) AS latitude,
+            right(split_part(wgs84, ' ', 1), -6) AS longitude
         FROM groep1."Raadsels"
         ORDER BY id''')
 
